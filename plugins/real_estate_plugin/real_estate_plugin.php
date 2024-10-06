@@ -180,12 +180,15 @@ function filter_real_estate_callback() {
 
     // Group by to avoid duplicates in case of multiple meta entries
     $query .= " GROUP BY p.ID";
+	
+	$no_limits = $query;
 
     // Додаємо обмеження та зсув
     $query .= " LIMIT $items_per_page OFFSET $offset";
 
     // Execute the query
     $results = $wpdb->get_results($query);
+    $no_limits_results = $wpdb->get_results($no_limits);
 
     if ($results) {
         echo '<div class="container mt-4"><div class="row">'; // Bootstrap контейнер та рядок
@@ -212,11 +215,11 @@ function filter_real_estate_callback() {
 
     // Пагінація
     // Отримуємо загальну кількість записів для визначення кількості сторінок
-    $total_count = count($results);
+    $total_count = count($no_limits_results);
 
     // Визначаємо загальну кількість сторінок
     $total_pages = ceil($total_count / $items_per_page);
-
+	
     // Генеруємо HTML для пагінації
     echo '<nav aria-label="Page navigation example">';
     echo '<ul class="pagination">';
