@@ -1,0 +1,245 @@
+{
+    "key": "group_real_estate",
+    "title": "Об'єкт нерухомості",
+    "fields": [
+        {
+            "key": "field_building_name",
+            "label": "Назва будинку",
+            "name": "field_building_name",
+            "type": "text",
+            "instructions": "Введіть назву будинку",
+            "required": 1,
+            "default_value": "",
+            "placeholder": "Назва будинку",
+            "prepend": "",
+            "append": "",
+            "maxlength": 100
+        },
+        {
+            "key": "field_location_coordinates",
+            "label": "Координати місцезнаходження",
+            "name": "field_location_coordinates",
+            "type": "text",
+            "instructions": "Введіть координати (наприклад, 50.4501, 30.5234)",
+            "required": 1,
+            "default_value": "",
+            "placeholder": "Широта, Довгота",
+            "prepend": "",
+            "append": "",
+            "maxlength": 50
+        },
+        {
+            "key": "field_number_of_floors",
+            "label": "Кількість поверхів",
+            "name": "field_number_of_floors",
+            "type": "select",
+            "instructions": "Виберіть кількість поверхів",
+            "required": 1,
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "7",
+                "8": "8",
+                "9": "9",
+                "10": "10",
+                "11": "11",
+                "12": "12",
+                "13": "13",
+                "14": "14",
+                "15": "15",
+                "16": "16",
+                "17": "17",
+                "18": "18",
+                "19": "19",
+                "20": "20"
+            },
+            "default_value": [],
+            "allow_null": false,
+            "multiple": false,
+            "ui": true,
+            "ajax": false,
+            "return_format": "value",
+            "placeholder": "Виберіть кількість поверхів"
+        },
+        {
+            "key": "field_building_type",
+            "label": "Тип будівлі",
+            "name": "field_building_type",
+            "type": "radio",
+            "instructions": "Виберіть тип будівлі",
+            "required": 1,
+            "choices": {
+                "панель": "Панель",
+                "цегла": "Цегла",
+                "піноблок": "Піноблок"
+            },
+            "allow_null": false,
+            "other_choice": false,
+            "default_value": "",
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_ecological_rating",
+            "label": "Екологічність",
+            "name": "field_ecological_rating",
+            "type": "select",
+            "instructions": "Оцініть екологічність будинку",
+            "required": 1,
+            "choices": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5"
+            },
+            "default_value": [],
+            "allow_null": false,
+            "multiple": false,
+            "ui": true,
+            "ajax": false,
+            "return_format": "value",
+            "placeholder": "Виберіть рівень екологічності"
+        },
+        {
+            "key": "field_building_image",
+            "label": "Зображення",
+            "name": "field_building_image",
+            "type": "image",
+            "instructions": "Завантажте зображення будинку",
+            "required": 0,
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": "jpg,jpeg,png"
+        },
+        {
+            "key": "field_rooms",
+            "label": "Приміщення",
+            "name": "field_rooms",
+            "type": "repeater",
+            "instructions": "Додайте приміщення в будинок",
+            "required": 0,
+            "collapsed": "field_room_area",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Додати приміщення",
+            "sub_fields": [
+                {
+                    "key": "field_room_area",
+                    "label": "Площа",
+                    "name": "field_room_area",
+                    "type": "text",
+                    "instructions": "Введіть площу приміщення (м²)",
+                    "required": 1,
+                    "default_value": "",
+                    "placeholder": "Наприклад, 75",
+                    "prepend": "",
+                    "append": "м²",
+                    "maxlength": 10
+                },
+                {
+                    "key": "field_number_of_rooms",
+                    "label": "Кількість кімнат",
+                    "name": "field_number_of_rooms",
+                    "type": "radio",
+                    "instructions": "Виберіть кількість кімнат",
+                    "required": 1,
+                    "choices": {
+                        "1": "1",
+                        "2": "2",
+                        "3": "3",
+                        "4": "4",
+                        "5": "5",
+                        "6": "6",
+                        "7": "7",
+                        "8": "8",
+                        "9": "9",
+                        "10": "10"
+                    },
+                    "allow_null": false,
+                    "other_choice": false,
+                    "default_value": "",
+                    "layout": "horizontal"
+                },
+                {
+                    "key": "field_balcony",
+                    "label": "Балкон",
+                    "name": "баfield_balconyлкон",
+                    "type": "radio",
+                    "instructions": "Чи є балкон у приміщенні?",
+                    "required": 1,
+                    "choices": {
+                        "так": "Так",
+                        "ні": "Ні"
+                    },
+                    "allow_null": false,
+                    "other_choice": false,
+                    "default_value": "",
+                    "layout": "horizontal"
+                },
+                {
+                    "key": "field_bathroom",
+                    "label": "Санвузол",
+                    "name": "field_bathroom",
+                    "type": "radio",
+                    "instructions": "Чи є санвузол у приміщенні?",
+                    "required": 1,
+                    "choices": {
+                        "так": "Так",
+                        "ні": "Ні"
+                    },
+                    "allow_null": false,
+                    "other_choice": false,
+                    "default_value": "",
+                    "layout": "horizontal"
+                },
+                {
+                    "key": "field_room_image",
+                    "label": "Зображення приміщення",
+                    "name": "field_room_image",
+                    "type": "image",
+                    "instructions": "Завантажте зображення приміщення",
+                    "required": 0,
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": "jpg,jpeg,png"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "real_estate"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Поля для об'єктів нерухомості"
+}
