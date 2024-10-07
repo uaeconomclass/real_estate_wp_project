@@ -1,11 +1,7 @@
 <?php
 /**
- * The template for displaying all pages
+ * The template for displaying single real estate
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
  *
  * @package Understrap
  */
@@ -51,52 +47,62 @@ $district_terms = get_the_terms($post_id, 'district');
 <div class="real-estate-single">
 
 
-    <h1><?php echo esc_html($building_name); ?></h1>
+<div class="container my-4">
+    <h1 class="text-center mb-4"><?php echo esc_html($building_name); ?></h1>
 
-	<?php	
-		// Якщо є терміни, вивести їх
-	if ($district_terms && !is_wp_error($district_terms)): ?>
-		Район:
-
-		<?php foreach ($district_terms as $term): 
-		echo esc_html($term->name); 
-		endforeach; ?>
-
-	<?php else: ?>
-		<p>Район не вказано.</p>
-	<?php endif; ?>
-	
-    <?php if ($building_image): ?>
-        <div class="building-image">
-            <img width="150px" src="<?php echo esc_url($building_image['url']); ?>" alt="<?php echo esc_attr($building_name); ?>">
+    <div class="row">
+        <div class="col-md-6">
+            <?php if ($building_image): ?>
+                <div class="building-image text-center mb-3">
+                    <img class="img-fluid" src="<?php echo esc_url($building_image['url']); ?>" alt="<?php echo esc_attr($building_name); ?>" style="max-width: 100%; height: auto;">
+                </div>
+            <?php endif; ?>
         </div>
-    <?php endif; ?>	
-    
-    <p><strong>Координати:</strong> <?php echo esc_html($location_coordinates); ?></p>
-    <p><strong>Кількість поверхів:</strong> <?php echo esc_html($number_of_floors); ?></p>
-    <p><strong>Тип будівлі:</strong> <?php echo esc_html($building_type); ?></p>
-    <p><strong>Екологічність:</strong> <?php echo esc_html($ecological_rating); ?></p>
 
-    <h2>Доступні квартири:</h2>
-    <ol class="rooms-list">
-        <?php if ($rooms): ?>
-            <?php foreach ($rooms as $room): ?>
-                <li> <?php if ($room['field_room_image']): ?>
-                        <div class="room-image">
-                            <img width="150px" src="<?php echo esc_url($room['field_room_image']['url']); ?>" alt="Room Image">
-                        </div>
-                    <?php endif; ?>
-                    <p><strong>Площа:</strong> <?php echo esc_html($room['field_room_area']); ?> м²</p>
-                    <p><strong>Кількість кімнат:</strong> <?php echo esc_html($room['field_number_of_rooms']); ?></p>
-                    <p><strong>Балкон:</strong> <?php echo esc_html($room['field_balcony']); ?></p>
-                    <p><strong>Санвузол:</strong> <?php echo esc_html($room['field_bathroom']); ?></p>
+        <div class="col-md-6">
+            <?php if ($district_terms && !is_wp_error($district_terms)): ?>
+                <p><strong>Район:</strong> 
+                    <?php foreach ($district_terms as $term): ?>
+                        <?php echo esc_html($term->name); ?> 
+                    <?php endforeach; ?>
+                </p>
+            <?php else: ?>
+                <p><strong>Район:</strong> Не вказано</p>
+            <?php endif; ?>
 
-                </li>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>Квартири не доступні.</p>
-        <?php endif; ?>
-    </ol>
+            <p><strong>Координати:</strong> <?php echo esc_html($location_coordinates); ?></p>
+            <p><strong>Кількість поверхів:</strong> <?php echo esc_html($number_of_floors); ?></p>
+            <p><strong>Тип будівлі:</strong> <?php echo esc_html($building_type); ?></p>
+            <p><strong>Екологічність:</strong> <?php echo esc_html($ecological_rating); ?></p>
+        </div>
+    </div>
+</div>
+
+	<h2 class="text-center my-4">Доступні квартири:</h2>
+	<ol class="rooms-list list-unstyled row">
+		<?php if ($rooms): ?>
+			<?php foreach ($rooms as $room): ?>
+				<li class="col-md-6 col-lg-4 mb-4">
+					<div class="card h-100">
+						<?php if ($room['field_room_image']): ?>
+							<div class="room-image">
+								<img class="card-img-top" src="<?php echo esc_url($room['field_room_image']['url']); ?>" alt="Room Image" style="height: 200px; object-fit: cover;">
+							</div>
+						<?php endif; ?>
+						<div class="card-body">
+							<p><strong>Площа:</strong> <?php echo esc_html($room['field_room_area']); ?> м²</p>
+							<p><strong>Кількість кімнат:</strong> <?php echo esc_html($room['field_number_of_rooms']); ?></p>
+							<p><strong>Балкон:</strong> <?php echo esc_html($room['field_balcony']); ?></p>
+							<p><strong>Санвузол:</strong> <?php echo esc_html($room['field_bathroom']); ?></p>
+						</div>
+					</div>
+				</li>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<p class="text-center">Квартири не доступні.</p>
+		<?php endif; ?>
+	</ol>
+
 </div>
 
 
